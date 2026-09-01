@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Mga Alamat ng Pilipinas — Aklatan ng Bata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2E8CF;
+    --paper-dark:#E6D8AE;
+    --wood:#6B4226;
+    --wood-dark:#4A2C18;
+    --leaf:#4C7A4C;
+    --leaf-light:#7FB069;
+    --mango:#F4A825;
+    --mango-dark:#D98A0F;
+    --coral:#E8735B;
+    --cream:#FFFDF7;
+    --ink:#3B2A1A;
+    --shadow: 0 6px 0 rgba(74,44,24,0.25);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Quicksand',sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(127,176,105,0.18), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(244,168,37,0.15), transparent 45%),
+      var(--paper);
+    background-attachment:fixed;
+    color:var(--ink);
+    min-height:100vh;
+    -webkit-tap-highlight-color:transparent;
+  }
+  /* woven mat texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(107,66,38,0.035) 0 6px, transparent 6px 12px),
+      repeating-linear-gradient(-45deg, rgba(107,66,38,0.035) 0 6px, transparent 6px 12px);
+  }
+  h1,h2,h3,.display{font-family:'Baloo 2',cursive;}
+
+  /* ---------- HERO SIGNBOARD ---------- */
+  .hero{
+    position:relative;
+    max-width:720px;
+    margin:18px auto 8px;
+    padding:20px 16px 26px;
+    text-align:center;
+    z-index:1;
+  }
+  .signboard{
+    background:linear-gradient(180deg,#8a5a34,#6B4226 60%, #5a3620);
+    border:6px solid var(--wood-dark);
+    border-radius:22px;
+    padding:18px 14px 16px;
+    box-shadow:var(--shadow), inset 0 0 0 3px rgba(255,255,255,0.06);
+    position:relative;
+  }
+  .signboard::before, .signboard::after{
+    content:"";
+    position:absolute;
+    top:100%;
+    width:14px; height:34px;
+    background:linear-gradient(180deg,#5a3620,#3d2414);
+    border-radius:0 0 4px 4px;
+  }
+  .signboard::before{ left:20px; }
+  .signboard::after{ right:20px; }
+  .hero h1{
+    color:#FFF6E0;
+    font-size:clamp(1.5rem, 6vw, 2.2rem);
+    margin:4px 0 6px;
+    letter-spacing:0.5px;
+    text-shadow:0 3px 0 rgba(0,0,0,0.25);
+  }
+  .hero p{
+    color:#FCEAC9;
+    margin:0;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  .hero .leaf-emoji{ font-size:1.6rem; }
+
+  .mascot-tip{
+    max-width:720px;
+    margin:0 auto 14px;
+    padding:0 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    z-index:1;
+    position:relative;
+  }
+  .mascot{
+    flex:0 0 auto;
+    width:52px; height:52px;
+    background:var(--cream);
+    border:3px solid var(--wood);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;
+    box-shadow:0 3px 0 rgba(74,44,24,0.2);
+    animation:bob 3s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  .speech{
+    background:var(--cream);
+    border:2px solid var(--wood);
+    border-radius:16px;
+    padding:8px 14px;
+    font-size:0.85rem;
+    font-weight:600;
+    position:relative;
+    flex:1;
+  }
+  .speech::before{
+    content:"";
+    position:absolute; left:-9px; top:16px;
+    border:6px solid transparent;
+    border-right-color:var(--wood);
+  }
+
+  /* ---------- CONTROLS ---------- */
+  .controls{
+    max-width:720px;
+    margin:0 auto 10px;
+    padding:0 16px;
+    z-index:1;
+    position:relative;
+  }
+  .search-wrap{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+  }
+  #search{
+    flex:1;
+    padding:12px 14px;
+    border-radius:14px;
+    border:2px solid var(--wood);
+    font-family:'Quicksand',sans-serif;
+    font-size:1rem;
+    font-weight:600;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  #search:focus{ outline:3px solid var(--mango); outline-offset:1px; }
+  .progress-pill{
+    background:var(--leaf);
+    color:#fff;
+    border-radius:14px;
+    padding:0 14px;
+    display:flex;
+    align-items:center;
+    font-weight:700;
+    font-size:0.85rem;
+    white-space:nowrap;
+    box-shadow:var(--shadow);
+  }
+  .gear-btn{
+    flex:0 0 auto;
+    width:44px;
+    background:var(--wood);
+    color:#FFF6E0;
+    border:none;
+    border-radius:14px;
+    font-size:1.2rem;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+  }
+  .gear-btn:active{ transform:translateY(2px); }
+
+  /* ---------- VOICE SETTINGS PANEL ---------- */
+  .settings-overlay{
+    position:fixed; inset:0;
+    background:rgba(59,42,26,0.55);
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:70;
+  }
+  .settings-overlay.open{ display:flex; }
+  .settings-sheet{
+    background:var(--cream);
+    width:100%;
+    max-width:720px;
+    border-radius:22px 22px 0 0;
+    padding:18px 18px 24px;
+    max-height:85vh;
+    overflow-y:auto;
+    box-shadow:0 -6px 0 rgba(74,44,24,0.15);
+  }
+  .settings-sheet h3{
+    margin:0 0 4px;
+    font-size:1.2rem;
+    color:var(--wood-dark);
+  }
+  .settings-sheet .sub{
+    font-size:0.8rem;
+    color:var(--wood-dark);
+    opacity:0.85;
+    margin:0 0 14px;
+    line-height:1.4;
+  }
+  .settings-sheet label{
+    display:block;
+    font-weight:700;
+    font-size:0.85rem;
+    margin:12px 0 4px;
+    color:var(--wood-dark);
+  }
+  .settings-sheet input[type="text"],
+  .settings-sheet input[type="password"],
+  .settings-sheet select{
+    width:100%;
+    padding:10px 12px;
+    border-radius:12px;
+    border:2px solid var(--leaf-light);
+    font-family:'Quicksand',sans-serif;
+    font-size:0.95rem;
+    font-weight:600;
+    background:#fff;
+    color:var(--ink);
+  }
+  .voice-status{
+    margin-top:10px;
+    font-size:0.8rem;
+    font-weight:700;
+    padding:8px 10px;
+    border-radius:10px;
+  }
+  .voice-status.on{ background:#dcefe0; color:#2c5c33; }
+  .voice-status.off{ background:#f4e4d4; color:var(--wood-dark); }
+  .settings-actions{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+  }
+  .settings-actions button{
+    flex:1;
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  #saveSettingsBtn{ background:var(--leaf); color:#fff; }
+  #closeSettingsBtn{ background:var(--paper-dark); color:var(--wood-dark); }
+  .settings-actions button:active{ transform:translateY(2px); }
+  .chips{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:4px;
+    -ms-overflow-style:none; scrollbar-width:none;
+  }
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:0 0 auto;
+    padding:8px 14px;
+    border-radius:999px;
+    border:2px solid var(--wood);
+    background:var(--cream);
+    font-weight:700;
+    font-size:0.85rem;
+    cursor:pointer;
+    color:var(--ink);
+    display:flex; align-items:center; gap:6px;
+    transition:transform .12s ease;
+  }
+  .chip:active{ transform:scale(0.95); }
+  .chip.active{
+    background:var(--mango);
+    border-color:var(--mango-dark);
+    color:#fff;
+  }
+
+  /* ---------- GRID ---------- */
+  .grid{
+    max-width:720px;
+    margin:0 auto 40px;
+    padding:6px 16px 20px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    z-index:1;
+    position:relative;
+  }
+  @media (min-width:480px){
+    .grid{grid-template-columns:repeat(3, 1fr);}
+  }
+  .card{
+    background:var(--cream);
+    border:3px solid var(--wood);
+    border-radius:16px;
+    padding:12px 8px 10px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 4px 0 rgba(74,44,24,0.2);
+    position:relative;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .card:active{ transform:translateY(3px); box-shadow:0 1px 0 rgba(74,44,24,0.2); }
+  .card .emoji{ font-size:2rem; display:block; margin-bottom:4px; }
+  .card .title{
+    font-family:'Baloo 2',cursive;
+    font-size:0.82rem;
+    font-weight:700;
+    line-height:1.15;
+    color:var(--wood-dark);
+  }
+  .card .catbadge{
+    position:absolute;
+    top:-8px; right:-6px;
+    font-size:0.9rem;
+    background:var(--leaf-light);
+    border-radius:50%;
+    width:22px;height:22px;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--cream);
+  }
+  .card.done{ border-color:var(--leaf); }
+  .card .check{
+    position:absolute; top:-8px; left:-6px;
+    background:var(--leaf);
+    color:#fff; border-radius:50%;
+    width:22px;height:22px;
+    font-size:0.75rem;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--cream);
+  }
+  .empty-msg{
+    grid-column:1/-1;
+    text-align:center;
+    padding:30px 10px;
+    font-weight:700;
+    color:var(--wood-dark);
+  }
+
+  /* ---------- MAIN TABS ---------- */
+  .main-tabs{
+    max-width:720px;
+    margin:0 auto 14px;
+    padding:0 16px;
+    display:flex;
+    gap:10px;
+    z-index:1;
+    position:relative;
+  }
+  .main-tab{
+    flex:1;
+    text-align:center;
+    padding:12px 8px;
+    border-radius:14px;
+    border:3px solid var(--wood);
+    background:var(--cream);
+    color:var(--wood-dark);
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    font-size:0.95rem;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+  }
+  .main-tab.active{
+    background:var(--mango);
+    color:#fff;
+    border-color:var(--mango-dark);
+  }
+  .main-tab:active{ transform:translateY(2px); box-shadow:none; }
+
+  /* ---------- WRITING / TRACING TAB ---------- */
+  .write-wrap{
+    max-width:720px;
+    margin:0 auto 30px;
+    padding:0 16px 20px;
+    z-index:1;
+    position:relative;
+  }
+  .write-intro{
+    background:var(--cream);
+    border:3px solid var(--wood);
+    border-radius:16px;
+    padding:14px 16px;
+    margin-bottom:18px;
+    box-shadow:0 4px 0 rgba(74,44,24,0.2);
+  }
+  .write-intro h2{
+    margin:0 0 4px;
+    font-size:1.15rem;
+    color:var(--wood-dark);
+  }
+  .write-intro p{
+    margin:0;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .trace-card{
+    background:var(--cream);
+    border:2px solid var(--paper-dark);
+    border-radius:14px;
+    padding:10px 14px 14px;
+    margin-bottom:14px;
+    box-shadow:0 3px 0 rgba(74,44,24,0.12);
+  }
+  .trace-card .trace-label{
+    font-size:0.72rem;
+    font-weight:800;
+    color:var(--leaf);
+    margin-bottom:4px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .trace-line-label{
+    font-size:0.7rem;
+    font-weight:700;
+    color:var(--wood-dark);
+    opacity:0.8;
+    margin:6px 0 2px;
+  }
+  .trace-row-scroll{
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    -ms-overflow-style:none; scrollbar-width:none;
+    border-radius:8px;
+  }
+  .trace-row-scroll::-webkit-scrollbar{ display:none; }
+  .trace-row-scroll svg{ display:block; }
+  .trace-row-scroll .model-letter{ fill:#3B2A1A; }
+  .trace-row-scroll .ghost-letter{
+    fill:none;
+    stroke:#8a7c60;
+    stroke-width:1.8;
+    stroke-dasharray:1.8,3;
+    stroke-linecap:round;
+  }
+
+  /* ---------- READING OVERLAY ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(59,42,26,0.55);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    z-index:50;
+    padding:0;
+    overflow-y:auto;
+  }
+  .overlay.open{ display:flex; }
+  .page{
+    background:var(--cream);
+    width:100%;
+    max-width:720px;
+    min-height:100vh;
+    padding:0 0 40px;
+    position:relative;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 38px, rgba(107,66,38,0.06) 38px 39px);
+  }
+  .page-header{
+    position:sticky; top:0;
+    background:var(--wood);
+    color:#FFF6E0;
+    padding:14px 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    z-index:5;
+  }
+  .back-btn{
+    background:var(--cream);
+    color:var(--wood-dark);
+    border:none;
+    border-radius:10px;
+    padding:8px 12px;
+    font-weight:800;
+    font-size:1rem;
+    cursor:pointer;
+  }
+  .page-header .ptitle{
+    font-family:'Baloo 2',cursive;
+    font-size:1.05rem;
+    flex:1;
+    text-align:center;
+    padding-right:40px;
+  }
+  .story-hero{
+    text-align:center;
+    padding:22px 20px 6px;
+  }
+  .story-hero .emoji-big{ font-size:3.4rem; display:block; }
+  .story-hero h2{
+    font-size:1.5rem;
+    color:var(--wood-dark);
+    margin:6px 0 2px;
+  }
+  .story-hero .catlabel{
+    display:inline-block;
+    background:var(--leaf);
+    color:#fff;
+    padding:3px 12px;
+    border-radius:999px;
+    font-size:0.75rem;
+    font-weight:700;
+  }
+  .tts-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    margin:14px auto 4px;
+    background:var(--mango);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:10px 20px;
+    font-weight:800;
+    font-size:0.95rem;
+    cursor:pointer;
+    box-shadow:0 4px 0 var(--mango-dark);
+  }
+  .tts-btn:active{ transform:translateY(3px); box-shadow:none; }
+  .tts-btn.loading{ opacity:0.75; cursor:wait; }
+  .tts-note{
+    text-align:center;
+    font-size:0.72rem;
+    font-weight:700;
+    color:var(--wood-dark);
+    opacity:0.8;
+    margin:2px 0 0;
+  }
+  .story-body{
+    padding:10px 22px 6px;
+    font-size:1.15rem;
+    line-height:1.9;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .story-body p{ margin:0 0 16px; }
+  .story-body .w{
+    cursor:pointer;
+    border-radius:6px;
+    padding:1px 2px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .story-body .w:hover{ background:rgba(244,168,37,0.25); }
+  .story-body .w.speaking{
+    background:var(--mango);
+    color:#fff;
+  }
+  .word-hint{
+    margin:0 22px 8px;
+    font-size:0.78rem;
+    color:var(--wood-dark);
+    opacity:0.75;
+    font-weight:700;
+  }
+  .section-label{
+    margin:18px 22px 8px;
+    font-family:'Baloo 2',cursive;
+    font-size:1.1rem;
+    color:var(--wood-dark);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .qa-box{
+    margin:0 18px 14px;
+    background:var(--paper);
+    border:2px dashed var(--wood);
+    border-radius:14px;
+    padding:12px 14px;
+  }
+  .qa-box .q{
+    font-weight:700;
+    margin-bottom:6px;
+    font-size:1rem;
+  }
+  .qa-box textarea{
+    width:100%;
+    min-height:44px;
+    border-radius:10px;
+    border:2px solid var(--leaf-light);
+    padding:8px 10px;
+    font-family:'Quicksand',sans-serif;
+    font-size:1rem;
+    resize:vertical;
+    background:var(--cream);
+  }
+  .mark-done{
+    display:block;
+    width:calc(100% - 44px);
+    margin:20px 22px 0;
+    background:var(--leaf);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:14px;
+    font-weight:800;
+    font-size:1.05rem;
+    cursor:pointer;
+    box-shadow:0 4px 0 #33552f;
+  }
+  .mark-done.done{ background:#33552f; }
+  .mark-done:active{ transform:translateY(3px); box-shadow:none; }
+  .nav-arrows{
+    display:flex;
+    justify-content:space-between;
+    margin:14px 22px 0;
+    gap:10px;
+  }
+  .nav-arrows button{
+    flex:1;
+    background:var(--cream);
+    border:2px solid var(--wood);
+    border-radius:12px;
+    padding:10px;
+    font-weight:700;
+    color:var(--wood-dark);
+    cursor:pointer;
+  }
+  .confetti{
+    position:fixed; inset:0; pointer-events:none; z-index:60;
+    display:none;
+  }
+  footer{
+    text-align:center;
+    padding:16px;
+    font-size:0.75rem;
+    color:var(--wood-dark);
+    opacity:0.75;
+    position:relative;
+    z-index:1;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="signboard">
+    <span class="leaf-emoji">🌿</span>
+    <h1>MGA ALAMAT NG PILIPINAS</h1>
+    <p>Aklatan ng Bata — Pagbasa at Pagsulat</p>
+  </div>
+</div>
+
+<div class="mascot-tip">
+  <div class="mascot">🧚</div>
+  <div class="speech" id="mascotSpeech">Kumusta! Ako si Diwata. Pumili ng kwento sa ibaba at simulan natin ang pagbabasa!</div>
+</div>
+
+<div class="main-tabs">
+  <div class="main-tab active" id="tabReadBtn">📖 Pagbasa ng Alamat</div>
+  <div class="main-tab" id="tabWriteBtn">✏️ Pagsasanay Sumulat</div>
+</div>
+
+<div id="readTab">
+<div class="controls">
+  <div class="search-wrap">
+    <input id="search" type="text" placeholder="🔍 Maghanap ng alamat..." autocomplete="off">
+    <div class="progress-pill" id="progressPill">0/50 ✅</div>
+    <button class="gear-btn" id="openSettingsBtn" title="Voice settings">⚙️</button>
+  </div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<div class="grid" id="grid"></div>
+</div>
+
+<div id="writeTab" style="display:none;">
+  <div class="write-wrap">
+    <div class="write-intro">
+      <h2>✏️ Isulat Mo! — Pagsasanay sa Pagsulat</h2>
+      <p>30 pangungusap na mula sa mga alamat. Ang malaking titik ay nagsisimula sa <b>asul na linya sa itaas</b>; ang maliit na titik ay nagsisimula sa <b>pulang tuldok-tuldok na guhit sa gitna</b>. Sundan ang tuldok-tuldok na titik gamit ang lapis o daliri.</p>
+    </div>
+    <div id="traceList"></div>
+  </div>
+</div>
+
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-sheet">
+    <h3>🔊 Boses ng Tagapagsalaysay</h3>
+    <p class="sub">Gumagamit ang app na ito ng SpeechGen.io upang magbigay ng tunay na babaeng boses sa Tagalog (fil-PH). Kailangan ng sarili mong SpeechGen account (may balanse) — kunin ang Email at Token sa iyong Dashboard sa speechgen.io. Nananatili lamang ito sa sesyong ito, hindi ito nase-save.</p>
+    <label for="sgEmail">Email sa SpeechGen.io</label>
+    <input type="text" id="sgEmail" placeholder="halimbawa@gmail.com" autocomplete="off">
+    <label for="sgToken">API Token</label>
+    <input type="password" id="sgToken" placeholder="Ilagay ang iyong secret token" autocomplete="off">
+    <label for="sgVoice">Babaeng Boses (Tagalog / fil-PH)</label>
+    <select id="sgVoice">
+      <option value="Blessica">Blessica (inirerekomenda)</option>
+      <option value="Amihan">Amihan</option>
+      <option value="Ailin">Ailin</option>
+      <option value="Lajda">Lajda</option>
+    </select>
+    <div class="voice-status off" id="voiceStatus">⚪ Gumagamit pa rin ng boses ng browser (walang SpeechGen na naka-set up).</div>
+    <div class="settings-actions">
+      <button id="closeSettingsBtn">Isara</button>
+      <button id="saveSettingsBtn">I-save</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Ginawa para sa mga batang Pilipino — Kinder &amp; Grade 1 · Basahin, Sagutin, at Isulat 🇵🇭
+  <br>
+  <span style="opacity:0.9;">Disenyo na inspirado sa gawa ni Ken Arrosas 🎨</span>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="page" id="pageContent"></div>
+</div>
+
+<canvas class="confetti" id="confetti"></canvas>
+
+<script>
+const CATS = {
+  bulaklak: {label:"Bulaklak", icon:"🌸", color:"#E8735B"},
+  prutas:   {label:"Prutas",   icon:"🍍", color:"#F4A825"},
+  halaman:  {label:"Halaman",  icon:"🌾", color:"#4C7A4C"},
+  hayop:    {label:"Hayop",    icon:"🐢", color:"#7FB069"},
+  kalikasan:{label:"Kalikasan",icon:"🌈", color:"#5B8DE8"},
+  bansa:    {label:"Bansa",    icon:"🇵🇭", color:"#6B4226"}
+};
+
+const LEGENDS = [
+{id:1,cat:"bulaklak",emoji:"🌼",title:"Alamat ng Sampaguita",
+ story:["Noong unang panahon, may isang batang babae na mabait at masipag. Mahal na mahal niya ang kanyang bayan.",
+ "Bago siya pumanaw, bumulong siya ng salitang “Sumpa Kita,” ibig sabihin ay pangako.",
+ "Sa lugar kung saan siya inilibing, tumubo ang munting puting bulaklak na napakabango.",
+ "Tinawag ng mga tao ang bulaklak na “Sampaguita” bilang alaala ng kanyang pangako.",
+ "Ito na ngayon ang pambansang bulaklak ng Pilipinas."],
+ q:["Anong salita ang binulong ng batang babae?","Anong kulay ang bulaklak na sampaguita?","Ano ang naging pambansang bulaklak ng Pilipinas?"]},
+
+{id:2,cat:"bulaklak",emoji:"🌸",title:"Alamat ng Ilang-Ilang",
+ story:["May isang mabait na prinsesa na mahilig mag-isa sa gubat.",
+ "Malayo, malayo siya laging pumupunta upang makinig sa mga ibon at hangin.",
+ "Isang araw, nagpasya siyang manatili magpakailanman sa gubat na kanyang minamahal.",
+ "Naging isang mataas na puno siya na may dilaw na bulaklak na mabango. Tinawag itong “Ilang-Ilang” dahil sa kanyang gawi na laging pumupunta sa malayo.",
+ "Ang bulaklak na ito ay ginagamit pa rin bilang gamot at pabango."],
+ q:["Bakit gustong-gusto ng prinsesa ang gubat?","Anong kulay ang bulaklak ng ilang-ilang?","Ano ang gamit ng bulaklak na ito ngayon?"]},
+
+{id:3,cat:"bulaklak",emoji:"🌺",title:"Alamat ng Kamya",
+ story:["May isang dalagang naghihintay araw-araw sa tabi ng ilog.",
+ "Hinihintay niya ang kanyang kaibigang matagal nang wala.",
+ "Dahil sa kanyang katapatan, hindi siya sumuko sa paghihintay kahit gaano katagal.",
+ "Isang umaga, siya ay naging isang magandang puno na may maputing bulaklak. Tinawag ito ng mga tao na “Kamya” bilang parangal sa kanyang katapatan.",
+ "Ngayon, tumutubo ang kamya malapit sa mga ilog at bukal."],
+ q:["Saan naghintay ang dalaga?","Ano ang naging gantimpala sa kanyang katapatan?","Saan tumutubo ang kamya?"]},
+
+{id:4,cat:"bulaklak",emoji:"🌙",title:"Alamat ng Dama de Noche",
+ story:["Isang batang babae ang laging tumitingin sa buwan tuwing gabi.",
+ "Gusto niyang kasama ang buwan magpakailanman. Narinig ng mabuting espiritu ang kanyang kahilingan.",
+ "Ginawa siyang isang bulaklak na namumukadkad lamang kapag dumidilim.",
+ "Ang bulaklak na ito ay tinawag na “Dama de Noche,” ibig sabihin ay “Ginang ng Gabi.”",
+ "Napakabango nito tuwing gabi, parang bumabati sa buwan."],
+ q:["Ano ang tinitingnan ng batang babae tuwing gabi?","Kailan namumukadkad ang dama de noche?","Ano ang ibig sabihin ng pangalang “Dama de Noche”?"]},
+
+{id:5,cat:"bulaklak",emoji:"🤍",title:"Alamat ng Rosal",
+ story:["May isang mabait na batang babae na laging tumutulong sa kanyang mga kapitbahay.",
+ "Bilang gantimpala sa kanyang kabutihan, binigyan siya ng diwata ng puting korona ng bulaklak.",
+ "Nang siya ay tumanda, hiniling niyang manatiling mabango at maputi magpakailanman.",
+ "Naging isang puno siya na may makapal at mabangong bulaklak. Ang bulaklak na ito ay tinawag na “Rosal.”",
+ "Ginagamit pa rin ito sa mga korona at dekorasyon hanggang ngayon."],
+ q:["Bakit binigyan ng diwata ang batang babae ng korona?","Anong kulay ang rosal?","Saan ginagamit ang rosal?"]},
+
+{id:6,cat:"bulaklak",emoji:"🌺",title:"Alamat ng Gumamela",
+ story:["May isang batang babae na nagngangalang Mela na masipag magtanim sa hardin ng kanyang ina.",
+ "Bawat umaga, dinidiligan niya ang mga halaman nang buong puso.",
+ "Dahil sa kanyang sipag, ang kanyang paboritong pulang bulaklak ay lumaki nang napakaganda.",
+ "Tinawag ng mga kapitbahay ang bulaklak na “Gumamela” bilang parangal kay Mela.",
+ "Ngayon, ang gumamela ay matatagpuan sa halos bawat bakuran sa Pilipinas."],
+ q:["Sino ang batang babae sa kwento?","Anong ginawa niya araw-araw sa hardin?","Saan matatagpuan ang gumamela ngayon?"]},
+
+{id:7,cat:"bulaklak",emoji:"🌷",title:"Alamat ng Waling-Waling",
+ story:["Sa malalim na gubat ng Mindanao, may isang magandang orkidyas na tinitingala ng lahat.",
+ "Sinasabing ito ay regalo ng mga diwata para sa mga taong may malinis na puso.",
+ "Dahil sa kagandahan nito, tinawag itong “Reyna ng mga Orkidyas.”",
+ "Ang bulaklak na ito ay tinawag na “Waling-Waling.” Napakabihira nito kaya kailangan itong ingatan at protektahan.",
+ "Hanggang ngayon, itinuturing ito na isa sa pinakamagandang bulaklak sa Pilipinas."],
+ q:["Saan matatagpuan ang waling-waling?","Bakit ito tinatawag na “Reyna ng mga Orkidyas”?","Bakit kailangan itong protektahan?"]},
+
+{id:8,cat:"bulaklak",emoji:"🌼",title:"Alamat ng Kalachuchi",
+ story:["May isang matandang lalaki na mabait sa lahat ng dumadaan sa kanyang bahay.",
+ "Nagtanim siya ng isang puno upang magbigay ng lilim at bango sa mga naglalakbay.",
+ "Ang puno ay namumulaklak ng maputi at dilaw na bulaklak buong taon.",
+ "Tinawag ito ng mga tao na “Kalachuchi” bilang alaala ng kabaitan ng matanda.",
+ "Ngayon, ang kalachuchi ay karaniwang nakikita sa mga parke at kalsada."],
+ q:["Bakit nagtanim ng puno ang matandang lalaki?","Anong kulay ang bulaklak ng kalachuchi?","Saan karaniwang nakikita ang kalachuchi?"]},
+
+{id:9,cat:"bulaklak",emoji:"❤️",title:"Alamat ng Santan",
+ story:["May isang munting ibon na nasugatan pagkatapos ng malakas na bagyo.",
+ "Isang batang babae ang nag-alaga rito hanggang gumaling ito.",
+ "Bilang pasasalamat, ibinigay ng ibon sa kanya ang mga buto ng magandang pulang bulaklak.",
+ "Itinanim ng bata ang mga buto sa kanilang bakuran. Lumaki ito bilang mga grupo ng maliliit na pulang bulaklak na tinawag na “Santan.”",
+ "Ngayon, ito ay isa sa mga paboritong bulaklak ng mga bata dahil sa matamis nitong nektar."],
+ q:["Sino ang inalagaan ng batang babae?","Anong regalo ang ibinigay ng ibon?","Anong kulay ang santan?"]},
+
+{id:10,cat:"bulaklak",emoji:"🌿",title:"Alamat ng Katuray",
+ story:["Sa isang baryo malapit sa ilog, may isang punong laging handang tumulong sa mga ibon at hayop.",
+ "Namumulaklak ito ng malaki at malambot na bulaklak na puno ng matamis na nektar.",
+ "Tuwing gutom ang mga ibon, dumadapo sila sa puno upang kumain.",
+ "Dahil sa kabutihan nito, tinawag ng mga tao itong “Katuray.” Ang mga bulaklak nito ay pinaghahandaan din bilang masarap na gulay.",
+ "Hanggang ngayon, mahalaga ang katuray sa mga hayop at tao."],
+ q:["Sino ang tumutulong sa mga ibon sa kwento?","Ano ang nasa loob ng bulaklak ng katuray?","Bakit mahalaga ang katuray?"]},
+
+{id:11,cat:"prutas",emoji:"🍍",title:"Alamat ng Pinya",
+ story:["Noong unang panahon, may isang batang babae na nagngangalang Pina na tamad tumulong sa bahay.",
+ "Tuwing hinahanap ng kanyang ina ang mga gamit, sinasabi niyang “Hindi ko alam!” kahit nakikita niya ito.",
+ "Isang araw, sinabi ng ina niya, “Sana marami kang mata para makita mo ang lahat!”",
+ "Nang gumising si Pina, siya ay naging isang prutas na may maraming “mata” sa balat. Tinawag itong “Pinya.”",
+ "Ito ay paalala sa mga bata na laging tumulong at maging matulungin sa pamilya."],
+ q:["Bakit napagalitan si Pina ng kanyang ina?","Ano ang natatangi sa balat ng pinya?","Anong aral ang matututunan sa alamat ng pinya?"]},
+
+{id:12,cat:"prutas",emoji:"🌰",title:"Alamat ng Sampalok",
+ story:["May isang batang lalaki na madalas magsinungaling upang makaiwas sa gawain.",
+ "Isang araw, pinaalalahanan siya ng kanyang lolo na ang katotohanan ay laging kailangang sabihin.",
+ "Hindi pa rin niya ito pinakinggan, kaya't umiyak siya nang labis dahil sa hiya.",
+ "Ang kanyang mga luha ay naging maasim na prutas na nahulog mula sa puno. Tinawag ito ng mga tao na “Sampalok.”",
+ "Ang asim nito ay paalala na ang kasinungalingan ay nagdudulot ng kahihiyan."],
+ q:["Anong bisyo mayroon ang batang lalaki?","Anong lasa ang sampalok?","Anong aral ang tinuturo ng alamat ng sampalok?"]},
+
+{id:13,cat:"prutas",emoji:"🥜",title:"Alamat ng Kasoy",
+ story:["May isang batang lalaki na palaging tapat sa lahat ng kanyang sinasabi.",
+ "Iniisip niyang dapat lantad ang puso ng isang tao, hindi itinatago.",
+ "Bilang gantimpala sa kanyang katapatan, ginawa siyang isang prutas na ang buto ay nasa labas, hindi nakatago sa loob.",
+ "Tinawag itong “Kasoy.”",
+ "Ito ay paalala na ang katapatan ay dapat laging makita at hindi itinatago."],
+ q:["Anong katangian mayroon ang batang lalaki sa kwento?","Saan matatagpuan ang buto ng kasoy?","Anong aral mula sa alamat ng kasoy?"]},
+
+{id:14,cat:"prutas",emoji:"🍈",title:"Alamat ng Lansones",
+ story:["Noong unang panahon, ang lansones ay puno ng lason kaya walang makakain nito.",
+ "Isang araw, dumaan ang isang mabait na diwata sa gubat at may dalang gutom na mga tao.",
+ "Hinawakan niya ang bawat prutas gamit ang kanyang mga daliri upang alisin ang lason.",
+ "Mula noon, nawala ang lason at naging matamis ang lansones.",
+ "Ang mga marka ng daliri ng diwata ay makikita pa rin sa balat ng bawat lansones hanggang ngayon."],
+ q:["Ano ang problema ng lansones noong unang panahon?","Sino ang tumulong upang maalis ang lason?","Ano ang makikita sa balat ng lansones ngayon?"]},
+
+{id:15,cat:"prutas",emoji:"🟤",title:"Alamat ng Duryan",
+ story:["May isang mayamang lalaki na sakim at ayaw magbahagi ng kanyang pagkain sa iba.",
+ "Dahil dito, ginawa siyang isang prutas na may matalim na balat na mahirap buksan.",
+ "Sa loob nito, matamis at masarap ang laman bilang paalala na dapat mabuting puso ang nasa loob.",
+ "Tinawag itong “Duryan.”",
+ "Kahit matalim ang labas nito, mabango at masarap ang nasa loob kung marunong lang magbahagi."],
+ q:["Anong ugali mayroon ang mayamang lalaki?","Ano ang natatangi sa balat ng duryan?","Anong aral ang ipinapakita ng duryan?"]},
+
+{id:16,cat:"prutas",emoji:"🔔",title:"Alamat ng Makopa",
+ story:["May isang batang babae na hindi mahilig makinig sa kanyang mga magulang.",
+ "Naiinis ang kanyang ina dahil kahit tawagin siya, hindi siya sumasagot.",
+ "Isang araw, hiniling ng ina na sana matuto siyang makinig.",
+ "Nang sumunod na umaga, naging isang prutas siyang hugis kampana. Tinawag itong “Makopa.”",
+ "Ang hugis kampana nito ay paalala sa mga bata na makinig nang mabuti sa kanilang mga magulang."],
+ q:["Anong ugali ng batang babae sa kwento?","Ano ang hugis ng makopa?","Anong aral ang ipinaalala ng makopa?"]},
+
+{id:17,cat:"prutas",emoji:"🍌",title:"Alamat ng Saging",
+ story:["May isang mag-anak na laging magkakasama sa bawat gawain.",
+ "Mahal na mahal nila ang isa't isa at hindi sila naghihiwalay.",
+ "Bilang gantimpala sa kanilang pagkakaisa, ginawa silang isang punla ng prutas na laging nakabuklod nang sama-sama sa isang kumpol.",
+ "Tinawag itong “Saging.”",
+ "Ito ay paalala na mas masaya at matatag ang pamilyang laging magkakasama."],
+ q:["Ano ang katangian ng mag-anak sa kwento?","Paano nakaayos ang bunga ng saging?","Anong aral ang ipinapakita ng saging?"]},
+
+{id:18,cat:"prutas",emoji:"🥥",title:"Alamat ng Niyog",
+ story:["May isang mabait na matandang lalaki na laging nagbibigay tulong sa mga naglalakbay.",
+ "Ibinigay niya ang lahat ng meron siya — pagkain, tubig, at tirahan — kahit paubos na ito.",
+ "Dahil sa kanyang kabutihan, ginawa siyang isang punong nagbibigay ng lahat: tubig mula sa bunga, pagkain mula sa laman, at bahay mula sa dahon.",
+ "Tinawag itong “Niyog.”",
+ "Hanggang ngayon, halos lahat ng bahagi ng niyog ay may silbi sa tao."],
+ q:["Anong tulong ibinigay ng matanda sa mga naglalakbay?","Anong parte ng niyog ang nagbibigay ng tubig?","Bakit mahalaga ang niyog?"]},
+
+{id:19,cat:"prutas",emoji:"🍏",title:"Alamat ng Bayabas",
+ story:["May isang magsasaka na masipag magtanim at laging naghahatid ng kanyang ani sa mga kapitbahay.",
+ "Dahil sa kanyang kabutihan, pinagpala siya ng maraming binhi na may sari-sariang bilang ng buto sa bawat prutas.",
+ "Ang bawat buto ay kumakatawan sa mga pagpapala na dumating sa kanyang buhay.",
+ "Tinawag itong “Bayabas.”",
+ "Kilala ito bilang isang malusog na prutas na puno ng bitamina C."],
+ q:["Anong trabaho ng magsasaka sa kwento?","Ano ang kinakatawan ng mga buto ng bayabas?","Bakit malusog ang bayabas?"]},
+
+{id:20,cat:"prutas",emoji:"🥭",title:"Alamat ng Mangga",
+ story:["May isang mag-asawang matiyaga sa paggawa kahit paulit-ulit silang nabigo sa pagsasaka.",
+ "Isang araw, nagpasalamat sila sa araw dahil sa init nitong nagpapatubo sa kanilang mga halaman.",
+ "Bilang gantimpala sa kanilang tiyaga, binigyan sila ng araw ng gintong prutas na matamis at mabango.",
+ "Tinawag itong “Mangga.”",
+ "Ito ang naging pambansang prutas ng Pilipinas dahil sa katamisan at kulay-ginto nito."],
+ q:["Ano ang katangian ng mag-asawa sa kwento?","Kanino sila nagpasalamat?","Ano ang naging pambansang prutas ng Pilipinas?"]},
+
+{id:21,cat:"halaman",emoji:"🌾",title:"Alamat ng Palay (Bigas)",
+ story:["Noong unang panahon, nagdusa ang isang baryo sa matinding taggutom.",
+ "Nanalangin ang mga tao sa mga espiritu upang humingi ng tulong.",
+ "Isang gabi, may bumagsak na maliliit na butil mula sa langit sa kanilang bukid.",
+ "Tumubo ang mga ito bilang matangkad na mga halaman na may ginintuang butil sa tuktok. Tinawag ito ng mga tao na “Palay,” at ang butil nito ay “Bigas.”",
+ "Mula noon, hindi na muling nagutom ang baryo."],
+ q:["Anong problema ang kinakaharap ng baryo?","Saan nanggaling ang mga butil ng palay?","Ano ang tawag sa butil ng palay?"]},
+
+{id:22,cat:"halaman",emoji:"🌿",title:"Alamat ng Makahiya",
+ story:["May isang batang babae na nagngangalang Maria na napakahiyain.",
+ "Tuwing may kausap siya, namumula ang kanyang mukha at ayaw niyang tingnan ang mga tao.",
+ "Isang araw, hiniling niyang maging isang halaman na lang para hindi na siya mahiya pa.",
+ "Ginawa siyang isang munting halaman na nagsasara ang mga dahon tuwing hinahawakan. Tinawag itong “Makahiya” dahil sa gawi nitong parang nahihiya.",
+ "Hanggang ngayon, nagsasara pa rin ang mga dahon nito kapag nahawakan."],
+ q:["Anong katangian ni Maria?","Ano ang ginagawa ng dahon ng makahiya kapag nahawakan?","Bakit tinawag itong “makahiya”?"]},
+
+{id:23,cat:"halaman",emoji:"🍠",title:"Alamat ng Kamote",
+ story:["May isang baryo na dumaranas ng taggutom pagkatapos ng malakas na bagyo.",
+ "Isang gabi, nangarap ang isang matandang babae na may pagkaing nakabaon sa lupa.",
+ "Kinaumagahan, hinukay niya ang lupa at natagpuan niya ang mabilog at matamis na ugat.",
+ "Ibinahagi niya ito sa buong baryo upang lahat ay makakain. Tinawag itong “Kamote.”",
+ "Simula noon, laging may kamote ang mga magsasaka kahit sa panahon ng taggutom."],
+ q:["Ano ang narinig ng matandang babae sa kanyang panaginip?","Saan natagpuan ang kamote?","Bakit mahalaga ang kamote sa mga magsasaka?"]},
+
+{id:24,cat:"halaman",emoji:"🥒",title:"Alamat ng Ampalaya",
+ story:["May isang batang lalaki na hindi mahilig kumain ng gulay dahil ayaw niya sa mapait na lasa.",
+ "Nagkasakit siya nang madalas dahil kulang sa bitamina.",
+ "Isang araw, may isang albularyo na nagbigay sa kanya ng gulay na mapait ngunit nakakapagpagaling.",
+ "Kumain siya nito kahit ayaw niya, at unti-unti siyang gumaling. Tinawag ang gulay na “Ampalaya.”",
+ "Mula noon, natutunan niyang kahit mapait, may mabuting dulot ito sa katawan."],
+ q:["Bakit madalas magkasakit ang batang lalaki?","Anong lasa ang ampalaya?","Anong aral ang natutunan niya sa ampalaya?"]},
+
+{id:25,cat:"halaman",emoji:"🍆",title:"Alamat ng Talong",
+ story:["May isang batang babae na palaging nagrereklamo tuwing nasusugatan siya nang bahagya.",
+ "Isang araw, natumba siya at namaga ang kanyang tuhod na nagkaroon ng kulay-ube.",
+ "Sa halip na umiyak, natutunan niyang tiisin ang sakit nang tahimik.",
+ "Bilang gantimpala sa kanyang tapang, ginawa siyang isang gulay na kulay-ube kagaya ng kanyang sugat noon. Tinawag itong “Talong.”",
+ "Ito ay paalala na ang tapang ay kaakibat ng pagtitiis."],
+ q:["Anong nangyari sa tuhod ng batang babae?","Anong kulay ang talong?","Anong aral tungkol sa tapang ang ipinapakita ng talong?"]},
+
+{id:26,cat:"hayop",emoji:"🐦",title:"Alamat ng Ibong Maya",
+ story:["Sa isang gubat, may maraming makukulay na ibon na palaging nagyayabang sa kanilang mga balahibo.",
+ "May isang munting kayumangging ibon na tahimik lamang at hindi nakikialam.",
+ "Nang dumating ang malakas na bagyo, ang mga makukulay na ibon ay natakot at nagtago.",
+ "Ang munting kayumangging ibon naman ay matiyagang tumulong sa iba upang makahanap ng kanlungan. Dahil sa kanyang kababaang-loob, ito ay pinarangalan bilang “Maya,” ang pambansang ibon ng Pilipinas.",
+ "Ito ay paalala na hindi laging ang pinakamakulay ang pinakamahalaga."],
+ q:["Ano ang katangian ng ibong Maya kumpara sa iba?","Ano ang ginawa niya noong bagyo?","Ano ang naging titulo ng Maya sa Pilipinas?"]},
+
+{id:27,cat:"hayop",emoji:"🦋",title:"Alamat ng Paruparo",
+ story:["May isang munting uod na nangangarap na makalipad sa kalangitan.",
+ "Araw-araw, tinitingnan niya ang mga ibong lumilipad at humihiling na sana siya ay makasama nila.",
+ "Isang araw, siya ay natulog nang mahimbing sa loob ng isang kumot na ginawa niya mismo.",
+ "Nang siya ay magising, mayroon na siyang makukulay na pakpak. Lumipad siya sa unang pagkakataon bilang isang magandang “Paruparo.”",
+ "Ito ay nagturo na ang pagbabago ay nangangailangan ng pasensya at paghihintay."],
+ q:["Ano ang pangarap ng munting uod?","Ano ang ginawa niya bago siya nagbago?","Anong aral ang ipinapakita ng kwento ng paruparo?"]},
+
+{id:28,cat:"hayop",emoji:"✨",title:"Alamat ng Alitaptap",
+ story:["May isang batang lalaki na laging tumutulong sa mga naliligaw sa gabi sa pamamagitan ng pagdadala ng ilaw.",
+ "Isang gabi, may malakas na bagyo at siya ay naligaw rin sa gubat.",
+ "Dahil sa kanyang kabaitan, dumating ang mga diwata upang tulungan siya.",
+ "Binigyan nila siya ng maliit na ilaw sa kanyang katawan upang hindi na siya maligaw pa. Naging isang munting kulisap siya na tinawag na “Alitaptap.”",
+ "Hanggang ngayon, patuloy itong nagbibigay ilaw sa madilim na gabi para sa mga naliligaw."],
+ q:["Ano ang ginawa ng batang lalaki para sa mga naliligaw?","Sino ang tumulong sa kanya noong siya ay maligaw?","Ano ang ginagawa ng alitaptap ngayon?"]},
+
+{id:29,cat:"hayop",emoji:"🐢",title:"Alamat ng Pagong at Matsing",
+ story:["May isang pagong at isang matsing na magkaibigan na nakakita ng puno ng saging sa gilid ng ilog.",
+ "Hinati nila ito — kinuha ng matsing ang bahaging may dahon, samantalang ang pagong naman ay kinuha ang bahaging walang dahon.",
+ "Tinamnan ng pagong ang kanyang bahagi at ito ay lumago bilang punong may bunga. Nainggit ang matsing at ninakaw ang mga saging mula sa puno ng pagong.",
+ "Dahil sa katiyagaan at katalinuhan nito, natuto ang pagong na tapatin ang katusuhan ng matsing.",
+ "Ang kwentong ito ay nagtuturo na ang tiyaga at katapatan ay mas mabuti kaysa katusuhan."],
+ q:["Ano ang natagpuan ng pagong at matsing sa ilog?","Sino ang nagmay-ari ng bahaging walang dahon?","Anong aral ang itinuturo ng kwentong ito?"]},
+
+{id:30,cat:"hayop",emoji:"🐃",title:"Alamat ng Kalabaw",
+ story:["Noong unang panahon, ang kalabaw ay isang mailap at ligaw na hayop sa gubat.",
+ "Isang magsasaka ang mabait na lumapit dito at nag-alaga rito nang may pagmamahal.",
+ "Dahan-dahan, natutong magtiwala ang kalabaw sa magsasaka.",
+ "Bilang pasasalamat, tinulungan niya ang magsasaka sa pagbubungkal ng lupa araw-araw. Mula noon, ang kalabaw ay naging matapat na kaibigan ng mga magsasaka sa buong Pilipinas.",
+ "Ito ang dahilan kung bakit ang kalabaw ay tinatawag na “Bayani ng Bukid.”"],
+ q:["Ano ang kalagayan ng kalabaw noong una?","Sino ang nag-alaga sa kalabaw?","Bakit tinatawag na “Bayani ng Bukid” ang kalabaw?"]},
+
+{id:31,cat:"hayop",emoji:"🐦‍⬛",title:"Alamat ng Uwak",
+ story:["Noong unang panahon, ang uwak ay isang maputing ibon na may magandang tinig.",
+ "Isang araw, ninakaw niya ang pagkain ng ibang mga ibon at nagsinungaling nang ito ay tinanong.",
+ "Dahil sa kanyang kasinungalingan, unti-unting nagbago ang kanyang kulay mula puti tungo sa itim.",
+ "Ang kanyang tinig naman ay naging magaspang, kaya't “kwak, kwak” na lamang ang narinig mula sa kanya.",
+ "Ito ay naging paalala sa lahat na ang kasinungalingan ay may kapalit na kahihiyan."],
+ q:["Anong kulay ang uwak noong una?","Bakit nagbago ang kulay ng uwak?","Anong aral ang itinuturo ng kwentong ito?"]},
+
+{id:32,cat:"hayop",emoji:"🕊️",title:"Alamat ng mga Hayop na Nagkapakpak",
+ story:["Noong unang panahon, ang mga bulaklak sa isang lugar ay hindi kayang lumaganap dahil hindi sila makagalaw.",
+ "Nalungkot ang mga ito dahil gusto nilang makarating sa ibang bahagi ng mundo.",
+ "Nakita ito ng mabait na mga hayop kaya't hiniling nila sa mga diwata na bigyan sila ng kakayahang tumulong.",
+ "Binigyan ng mga diwata ang ilang hayop ng pakpak upang makalipad at makapagdala ng mga binhi ng bulaklak. Dahil dito, kumalat ang mga magagandang bulaklak sa buong daigdig.",
+ "Ito ang dahilan kung bakit may mga ibon at kulisap na may pakpak hanggang ngayon."],
+ q:["Bakit hindi makagalaw ang mga bulaklak noong una?","Ano ang ibinigay ng mga diwata sa mga hayop?","Ano ang tungkulin ng mga may pakpak na hayop?"]},
+
+{id:33,cat:"hayop",emoji:"🐸",title:"Alamat ng Palaka",
+ story:["May isang mayabang na prinsesa na laging nangungutya sa mga taong mas mababa sa kanya.",
+ "Isang araw, sinaway siya ng isang matandang diwata dahil sa kanyang ugali.",
+ "Hindi siya nakinig kaya ginawa siyang isang munting hayop na nabubuhay sa tubig-lupa.",
+ "Ito ay upang matutunan niyang maging mapagkumbaba tulad ng ibang hayop. Tinawag itong “Palaka.”",
+ "Ang tunog nitong “kwak, kwak” ay tila paalala pa rin sa kanyang dating pagmamayabang."],
+ q:["Anong ugali ng prinsesa sa kwento?","Sino ang sumaway sa kanya?","Anong aral ang matututunan mula sa kwento ng palaka?"]},
+
+{id:34,cat:"hayop",emoji:"🦎",title:"Alamat ng Butiki",
+ story:["May isang batang lalaki na hindi kayang tumigil sa pagsasalita, kahit sa oras ng klase o pagtulog.",
+ "Nayamot ang kanyang mga kamag-anak dahil sa kanyang walang tigil na kwentuhan.",
+ "Isang araw, hiniling nilang matuto sana siyang tumahimik paminsan-minsan.",
+ "Nang sumunod na araw, naging isang munting hayop siyang laging kumakapit sa dingding. Ang tunog niyang “tuko, tuko” ay parang patuloy pa rin siyang nagsasalita.",
+ "Tinawag itong “Butiki” o “Tuko.”"],
+ q:["Anong ugali ng batang lalaki sa kwento?","Anong tunog ang ginagawa ng butiki?","Saan karaniwang nakikita ang butiki?"]},
+
+{id:35,cat:"hayop",emoji:"🐝",title:"Alamat ng Bubuyog",
+ story:["May isang masipag na batang babae na laging tumutulong sa mga gawaing-bahay at sa hardin.",
+ "Araw-araw, dinadalaw niya ang bawat bulaklak upang alagaan ito.",
+ "Dahil sa kanyang sipag, binigyan siya ng mga diwata ng kakayahang lumipad mula sa bulaklak patungo sa bulaklak.",
+ "Nagsimula siyang mangolekta ng matamis na katas upang gawing pulot. Tinawag itong “Bubuyog.”",
+ "Ito ay paalala na ang sipag ay nagbubunga ng matamis na gantimpala."],
+ q:["Anong ugali ng batang babae sa kwento?","Ano ang kinokolekta ng bubuyog?","Anong aral ang ipinapakita ng bubuyog?"]},
+
+{id:36,cat:"kalikasan",emoji:"☀️",title:"Alamat ng Araw at Gabi",
+ story:["Noong unang panahon, may magkapatid na Araw at Gabi na palaging nag-aaway kung sino ang dapat manatili sa kalangitan.",
+ "Napagod ang kanilang ama sa kanilang pag-aaway kaya't nagpasya siyang hatiin ang oras sa pagitan nila.",
+ "Ang Araw ay bibigyan ng pagkakataong magbigay-liwanag sa umaga hanggang hapon.",
+ "Ang Gabi naman ay mamamahala mula sa paglubog ng araw hanggang muling pagsikat nito. Dahil dito, may pagkakasunod-sunod ang araw at gabi hanggang ngayon.",
+ "Natutunan ng magkapatid na mas mainam ang pagsasalitan kaysa pag-aaway."],
+ q:["Sino ang mga magkapatid sa alamat?","Bakit sila hinati ng kanilang ama?","Ano ang natutunan nila?"]},
+
+{id:37,cat:"kalikasan",emoji:"🌙",title:"Alamat ng Araw at Buwan",
+ story:["Noong una, magkasama ang Araw at Buwan sa kalangitan sa araw at gabi.",
+ "Ngunit lagi silang nagbabangayan dahil pareho silang gustong magningning nang buong araw.",
+ "Dahil sa kanilang di-pagkakasundo, nagpasya ang mga diwata na paghiwalayin sila.",
+ "Ang Araw ay mananatili sa kalangitan tuwing umaga, habang ang Buwan naman ay sasabay sa mga bituin tuwing gabi.",
+ "Simula noon, hindi na sila muling nagkasama sa kalangitan. Ito ang dahilan kung bakit magkaiba ang oras ng pagsikat ng araw at buwan."],
+ q:["Bakit nag-aaway ang Araw at Buwan?","Sino ang naghiwalay sa kanila?","Kailan lumilitaw ang Araw, at kailan naman ang Buwan?"]},
+
+{id:38,cat:"kalikasan",emoji:"⭐",title:"Alamat ng mga Bituin",
+ story:["May mga batang naliligaw sa gubat isang gabi at wala silang liwanag na magabayan.",
+ "Nanalangin sila sa langit na sana may tumulong sa kanila na makauwi.",
+ "Naantig ang mga diwata kaya't isinama nila ang mga bata sa kalangitan bilang munting ilaw.",
+ "Doon sila nagningning tuwing gabi upang gabayan ang mga naliligaw na manlalakbay. Tinawag sila na “mga Bituin.”",
+ "Hanggang ngayon, sila ay kumikislap sa dilim upang tumulong sa lahat."],
+ q:["Ano ang problema ng mga bata sa gubat?","Sino ang tumulong sa kanila?","Ano ang ginagawa ng mga bituin ngayon?"]},
+
+{id:39,cat:"kalikasan",emoji:"🌈",title:"Alamat ng Bahaghari",
+ story:["Matapos ang isang malakas na bagyo, malungkot ang mga tao dahil nasira ang kanilang mga bahay at pananim.",
+ "Nahabag ang mga diwata sa kalangitan kaya't gumawa sila ng magandang tulay na makukulay bilang tanda ng pag-asa.",
+ "Ang tulay na ito ay nagpapakita lamang tuwing may ulan at sikat ng araw nang sabay.",
+ "Tinawag itong “Bahaghari.”",
+ "Ito ay paalala sa mga tao na pagkatapos ng bagyo, laging may kasunod na pag-asa at kagandahan."],
+ q:["Kailan lumilitaw ang bahaghari?","Sino ang gumawa ng bahaghari ayon sa alamat?","Ano ang ipinapahiwatig ng bahaghari sa mga tao?"]},
+
+{id:40,cat:"kalikasan",emoji:"🌋",title:"Alamat ng Bundok Pinatubo",
+ story:["Matagal nang natutulog ang isang higanteng bundok sa Luzon, tahimik at mapayapa.",
+ "Pinuprotektahan nito ang mga tao at hayop sa palibot sa loob ng maraming taon.",
+ "Paminsan-minsan, kailangan nitong gumising upang ilabas ang init sa loob nito, tulad ng isang taong huminga nang malalim.",
+ "Tinawag ito ng mga tao na “Bundok Pinatubo.”",
+ "Kahit minsan itong gumigising, muli itong natutulog at nagbibigay-buhay sa lupang nakapalibot dito."],
+ q:["Ano ang katangian ng Bundok Pinatubo sa karamihan ng panahon?","Bakit ito “gumigising” paminsan-minsan?","Nasaan matatagpuan ang Bundok Pinatubo?"]},
+
+{id:41,cat:"kalikasan",emoji:"🌋",title:"Alamat ng Bundok Mayon",
+ story:["May isang magandang dalagang nagngangalang Magayon na iniibig ng isang matapang na mandirigma.",
+ "Ngunit may masamang datu ring gustong pakasalan siya kaya nagkaroon ng away.",
+ "Ipinaglaban ng mandirigma ang kanyang minamahal, ngunit sa huli, pareho silang nawala.",
+ "Dahil sa lungkot, ang lupa ay tumaas at nabuo ang isang bundok na may perpektong hugis-kono. Tinawag itong “Bundok Mayon” bilang parangal sa kagandahan ni Magayon.",
+ "Hanggang ngayon, ito ay itinuturing na isa sa pinakamagandang bundok sa mundo dahil sa hugis nito."],
+ q:["Sino si Magayon?","Bakit nagkaroon ng away sa kwento?","Ano ang natatangi sa hugis ng Bundok Mayon?"]},
+
+{id:42,cat:"kalikasan",emoji:"⛰️",title:"Alamat ng Bundok Pinto",
+ story:["Sa Mindanao, may isang bundok na hugis-pinto na pinaniniwalaang tarangkahan patungo sa isang lihim na baryo ng mababait na espiritu.",
+ "Ang pintuan ay bumubukas lamang para sa mga manlalakbay na may malinis na puso at layunin.",
+ "Ang mga taong sakim o masama ay hindi makakahanap ng daan patungo rito.",
+ "Tinawag ito ng mga tao na “Bundok Pinto.”",
+ "Kwento ito na paalala na ang kabaitan ang susi upang makatagpo ng magagandang bagay sa buhay."],
+ q:["Ano ang hugis ng Bundok Pinto?","Sino ang maaaring makapasok sa lihim na baryo?","Anong aral ang ipinapakita ng kwentong ito?"]},
+
+{id:43,cat:"kalikasan",emoji:"🌋",title:"Alamat ng Bundok Kanlaon",
+ story:["Sa isla ng Negros, may isang matapang na bantay na tinatawag na “Kan” na nangangalaga sa mga tao laban sa mga mananakop.",
+ "Tinulungan siya ng isang makapangyarihang espiritu na nagngangalang “Laon.”",
+ "Magkasama nilang ipinagtanggol ang kanilang lupain hanggang sa sila ay maging bahagi ng isang matayog na bundok.",
+ "Tinawag itong “Bundok Kanlaon” bilang pagsasama ng kanilang mga pangalan.",
+ "Ito ay nananatiling tanda ng tapang at pagkakaisa ng mga tao sa Negros."],
+ q:["Sino si Kan sa kwento?","Sino ang tumulong sa kanya?","Paano nabuo ang pangalang “Kanlaon”?"]},
+
+{id:44,cat:"kalikasan",emoji:"🏞️",title:"Alamat ng Lawa ng Bulusan",
+ story:["Noong unang panahon, may isang mayamang baryo na ang mga tao ay naging sakim at hindi na tumutulong sa mga dukha.",
+ "Isang matandang manlalakbay ang humingi ng tulong ngunit walang sinuman ang tumugon sa kanya.",
+ "Malungkot siyang umalis at humiling na sana matuto ang baryo na magbahagi.",
+ "Kinaumagahan, ang buong baryo ay natakpan ng tubig at naging isang malaking lawa. Tinawag itong “Lawa ng Bulusan.”",
+ "Ito ay paalala na dapat laging tumulong sa kapwa anuman ang kalagayan sa buhay."],
+ q:["Anong ugali ng mga tao sa baryo?","Ano ang hiniling ng matandang manlalakbay?","Anong aral ang ipinapakita ng Lawa ng Bulusan?"]},
+
+{id:45,cat:"kalikasan",emoji:"🌊",title:"Alamat ng Ilog Pasig",
+ story:["May isang malaking higante na naninirahan malapit sa Look ng Maynila at gustong tumulong sa mga mangingisda.",
+ "Nais niyang dumaloy ang tubig mula sa malaking lawa patungo sa dagat upang may sapat na isda ang mga tao.",
+ "Gumawa siya ng malaking landas gamit ang kanyang mga kamay, at dito dumaloy ang tubig mula sa Laguna de Bay patungo sa Look ng Maynila.",
+ "Tinawag itong “Ilog Pasig.”",
+ "Hanggang ngayon, ito ay mahalagang daanan ng mga bangka at pinagkukunan ng ikabubuhay ng maraming pamilya."],
+ q:["Sino ang gumawa ng ilog ayon sa alamat?","Saan nagmumula ang tubig ng Ilog Pasig?","Bakit mahalaga ang Ilog Pasig sa mga tao?"]},
+
+{id:46,cat:"bansa",emoji:"🇵🇭",title:"Alamat ng Pilipinas",
+ story:["Noong unang panahon, dumating ang mga dayuhan mula sa malayong bansa sakay ng malalaking barko.",
+ "Pinangalanan nila ang ating kapuluan na “Filipinas” bilang parangal sa isang hari mula sa kanilang bansa.",
+ "Sa paglipas ng panahon, natutunan ng mga Pilipino na ipagmalaki ang kanilang sariling pagkakakilanlan.",
+ "Binago nila ang tawag sa bansa mula “Filipinas” patungong “Pilipinas.” Ito na ang opisyal na pangalan ng ating bansa hanggang ngayon.",
+ "Mahalagang alamin ng bawat Pilipino ang kasaysayan ng pangalan ng kanilang bayan."],
+ q:["Kanino ipinangalan ang “Filipinas”?","Ano ang opisyal na pangalan ng ating bansa ngayon?","Bakit mahalagang malaman ang kasaysayan ng pangalan ng bansa?"]},
+
+{id:47,cat:"bansa",emoji:"🌍",title:"Alamat ng Daigdig",
+ story:["Noong unang panahon, mayroon lamang malawak na dagat at kalangitan, walang lupa sa pagitan.",
+ "May isang malaking ibon na lumilipad nang walang lugar na madadapuan, kaya lagi itong napapagod.",
+ "Isang araw, nag-away ang dagat at hangin, at nagpasa ang alon patungo sa langit.",
+ "Dahil dito, nagsimulang tumigas ang ilang bahagi ng tubig at bumuo ng mga lupain. Doon unang dumapo ang pagod na ibon, at doon din nagsimula ang mga puno, bundok, at ilog.",
+ "Ito ang alamat kung paano nabuo ang ating daigdig."],
+ q:["Ano ang mayroon lamang noong unang panahon?","Bakit napapagod ang malaking ibon?","Paano nabuo ang mga lupain ayon sa alamat?"]},
+
+{id:48,cat:"bansa",emoji:"🏘️",title:"Alamat ng Lahing Tagalog",
+ story:["Noong unang panahon, may mga tao na naninirahan sa tabi ng malalaking ilog sa Luzon.",
+ "Dahil sa kanilang tahanan, tinawag sila ng ibang grupo na “taga-ilog,” ibig sabihin ay mga taong nakatira sa tabi ng ilog.",
+ "Sa paglipas ng panahon, ang salitang “taga-ilog” ay naging “Tagalog.”",
+ "Ipinagmalaki nila ang kanilang wika at kultura na kilala bilang Wikang Tagalog. Ito ang naging batayan ng Wikang Filipino na ginagamit natin ngayon.",
+ "Mahalaga ang pag-alala sa pinagmulan ng ating wika at pagkakakilanlan."],
+ q:["Saan nakatira ang mga unang Tagalog?","Saan nanggaling ang salitang “Tagalog”?","Ano ang naging batayan ng Wikang Filipino?"]},
+
+{id:49,cat:"bansa",emoji:"⛵",title:"Alamat ng Sampung Datu",
+ story:["Noong unang panahon, may sampung datu mula sa malayong lupain na naglayag patungong isang isla upang maghanap ng bagong tahanan.",
+ "Nakilala nila ang mabait na haring Ati na naninirahan sa isla.",
+ "Ipinagpalit nila ang isang gintong sombrero at kwintas upang mabili ang kapatagan para sa kanilang mga pamilya.",
+ "Masayang pumayag ang haring Ati, at kapwa sila naging magkaibigan.",
+ "Doon nagsimulang manirahan ang sampung datu, na naging simula ng mga unang pamayanan sa Panay. Ito ay tinatawag na “Alamat ng Sampung Datu.”"],
+ q:["Ilan ang datu sa alamat?","Ano ang ipinagpalit nila para sa lupa?","Saan sila unang nanirahan?"]},
+
+{id:50,cat:"bansa",emoji:"👩",title:"Alamat ni Mariang Makiling",
+ story:["Sa isang bundok sa Laguna, may naninirahang mabait na diwata na nagngangalang Maria.",
+ "Tinutulungan niya ang mga mahihirap na magsasaka sa pamamagitan ng pagbibigay ng gulay, prutas, at gamot mula sa gubat.",
+ "Ngunit sa mga mangangaso at taong sakim, nagtatago siya at hindi nagpapakita.",
+ "Dahil sa kanyang kabaitan, ipinangalan sa kanya ang bundok na kanyang tinitirhan — “Bundok Makiling.”",
+ "Hanggang ngayon, sinasabing minsan pa rin siyang nakikita ng mga mabubuting manlalakbay. Siya ay kilala bilang “Mariang Makiling,” ang mabait na diwata ng bundok."],
+ q:["Sino si Mariang Makiling?","Kanino siya tumutulong?","Bakit siya nagtatago sa ilang tao?"]}
+];
+
+let currentIndex = -1;
+let filterCat = "lahat";
+let searchTerm = "";
+const doneSet = new Set();
+
+// SpeechGen.io configuration — session-only (never persisted to disk/localStorage).
+// Get your email + token from your SpeechGen.io Dashboard after funding your account.
+const speechgenConfig = {
+  email: "",
+  token: "",
+  voice: "Blessica" // default female Tagalog (fil-PH) voice
+};
+let currentAudio = null;
+
+function isSpeechgenReady(){
+  return !!(speechgenConfig.email && speechgenConfig.token);
+}
+
+function updateVoiceStatus(){
+  const el = document.getElementById('voiceStatus');
+  if(!el) return;
+  if(isSpeechgenReady()){
+    el.className = 'voice-status on';
+    el.textContent = `🟢 Aktibo: SpeechGen.io — babaeng boses na Tagalog (${speechgenConfig.voice}).`;
+  } else {
+    el.className = 'voice-status off';
+    el.textContent = '⚪ Gumagamit pa rin ng boses ng browser (walang SpeechGen na naka-set up).';
+  }
+}
+
+function openSettings(){
+  document.getElementById('sgEmail').value = speechgenConfig.email;
+  document.getElementById('sgToken').value = speechgenConfig.token;
+  document.getElementById('sgVoice').value = speechgenConfig.voice;
+  updateVoiceStatus();
+  document.getElementById('settingsOverlay').classList.add('open');
+}
+function closeSettings(){
+  document.getElementById('settingsOverlay').classList.remove('open');
+}
+function saveSettings(){
+  speechgenConfig.email = document.getElementById('sgEmail').value.trim();
+  speechgenConfig.token = document.getElementById('sgToken').value.trim();
+  speechgenConfig.voice = document.getElementById('sgVoice').value;
+  updateVoiceStatus();
+}
+
+// Calls SpeechGen.io's REST API (https://speechgen.io/index.php?r=api/voices lists
+// all voices; the Filipino/Tagalog category — language code fil-PH — includes the
+// female voices Blessica, Amihan, Ailin and Lajda). Resolves to a playable MP3 URL,
+// or rejects if the account isn't configured or the request fails.
+async function synthesizeWithSpeechGen(text, {slow=false} = {}){
+  if(!isSpeechgenReady()) throw new Error('not-configured');
+  const body = new URLSearchParams({
+    token: speechgenConfig.token,
+    email: speechgenConfig.email,
+    voice: speechgenConfig.voice,
+    text: text,
+    format: 'mp3',
+    speed: slow ? '0.75' : '0.92',
+    pitch: '0',
+    emotion: 'good'
+  });
+  const resp = await fetch('https://speechgen.io/index.php?r=api/text', {
+    method: 'POST',
+    body
+  });
+  if(!resp.ok) throw new Error('http-' + resp.status);
+  let data = await resp.json();
+
+  // Short texts normally return status 1 immediately; poll api/result otherwise.
+  let tries = 0;
+  while(data.status == 0 && tries < 20){
+    await new Promise(r => setTimeout(r, 1500));
+    const pollBody = new URLSearchParams({
+      token: speechgenConfig.token,
+      email: speechgenConfig.email,
+      id: data.id
+    });
+    const pollResp = await fetch('https://speechgen.io/index.php?r=api/result', { method:'POST', body: pollBody });
+    data = await pollResp.json();
+    tries++;
+  }
+
+  if(data.status != 1) throw new Error(data.error || 'speechgen-error');
+  let fileUrl = data.file_cors || data.file;
+  if(fileUrl && !/^https?:\/\//i.test(fileUrl)){
+    fileUrl = 'https://speechgen.io/' + fileUrl.replace(/^\/+/, '');
+  }
+  return fileUrl;
+}
+
+function stopAllAudio(){
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+}
+
+function renderChips(){
+  const chipsEl = document.getElementById('chips');
+  let html = `<div class="chip active" data-cat="lahat">🗂️ Lahat</div>`;
+  for(const key in CATS){
+    html += `<div class="chip" data-cat="${key}">${CATS[key].icon} ${CATS[key].label}</div>`;
+  }
+  chipsEl.innerHTML = html;
+  chipsEl.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      filterCat = chip.dataset.cat;
+      renderGrid();
+    });
+  });
+}
+
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const term = searchTerm.trim().toLowerCase();
+  const list = LEGENDS.filter(l=>{
+    const matchCat = (filterCat==="lahat") || (l.cat===filterCat);
+    const matchSearch = !term || l.title.toLowerCase().includes(term);
+    return matchCat && matchSearch;
+  });
+  if(list.length===0){
+    grid.innerHTML = `<div class="empty-msg">😅 Walang nahanap na alamat. Subukan ang ibang salita!</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(l=>{
+    const isDone = doneSet.has(l.id);
+    return `<div class="card ${isDone?'done':''}" data-id="${l.id}">
+      ${isDone ? `<div class="check">✓</div>` : ``}
+      <div class="catbadge">${CATS[l.cat].icon}</div>
+      <span class="emoji">${l.emoji}</span>
+      <div class="title">${l.title.replace('Alamat ng ','').replace('Alamat ni ','')}</div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const id = parseInt(card.dataset.id);
+      openStory(id);
+    });
+  });
+  updateProgress();
+}
+
+function updateProgress(){
+  document.getElementById('progressPill').textContent = `${doneSet.size}/50 ✅`;
+}
+
+function openStory(id){
+  currentIndex = LEGENDS.findIndex(l=>l.id===id);
+  renderPage();
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('pageContent').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+function renderPage(){
+  const l = LEGENDS[currentIndex];
+  const isDone = doneSet.has(l.id);
+  const page = document.getElementById('pageContent');
+  page.innerHTML = `
+    <div class="page-header">
+      <button class="back-btn" id="backBtn">← Balik</button>
+      <div class="ptitle">${CATS[l.cat].label}</div>
+    </div>
+    <div class="story-hero">
+      <span class="emoji-big">${l.emoji}</span>
+      <h2>${l.title}</h2>
+      <span class="catlabel">${CATS[l.cat].icon} ${CATS[l.cat].label}</span>
+      <br>
+      <button class="tts-btn" id="ttsBtn">🔊 Basahin nang Malakas</button>
+      <div class="tts-note" id="ttsNote"></div>
+    </div>
+    <div class="word-hint">👆 Pindutin ang isang salita para marinig ang tamang bigkas nito.</div>
+    <div class="story-body" id="storyBody">
+      ${l.story.map(p=>`<p>${wrapWords(p)}</p>`).join('')}
+    </div>
+    <div class="section-label">✏️ Mga Tanong — Sagutin at Isulat</div>
+    ${l.q.map((q,i)=>`
+      <div class="qa-box">
+        <div class="q">${i+1}. ${q}</div>
+        <textarea placeholder="Isulat ang iyong sagot dito..."></textarea>
+      </div>
+    `).join('')}
+    <button class="mark-done ${isDone?'done':''}" id="markDoneBtn">
+      ${isDone ? '✓ Tapos na ang Pagbasa!' : '🌟 Tapos na Akong Magbasa!'}
+    </button>
+    <div class="nav-arrows">
+      <button id="prevBtn">⬅ Nakaraan</button>
+      <button id="nextBtn">Susunod ➡</button>
+    </div>
+  `;
+  document.getElementById('backBtn').addEventListener('click', closeStory);
+  document.getElementById('ttsBtn').addEventListener('click', ()=>readAloud(l));
+  document.getElementById('markDoneBtn').addEventListener('click', ()=>toggleDone(l.id));
+  document.getElementById('prevBtn').addEventListener('click', ()=>navigate(-1));
+  document.getElementById('nextBtn').addEventListener('click', ()=>navigate(1));
+  document.getElementById('storyBody').addEventListener('click', (e)=>{
+    const target = e.target.closest('.w');
+    if(target) speakWord(target);
+  });
+}
+
+// Wrap each word of a sentence in a clickable, tappable span so a child
+// can point to any word and hear it pronounced correctly.
+function wrapWords(sentence){
+  return sentence.split(/(\s+)/).map(chunk=>{
+    if(/^\s+$/.test(chunk) || chunk.length===0) return chunk;
+    return `<span class="w" data-word="${chunk.replace(/"/g,'&quot;')}">${chunk}</span>`;
+  }).join('');
+}
+
+// Picks the most Filipino-sounding voice available on the device.
+// Priority: fil-PH > any "fil"/"tl" tagged voice > any Philippine (PH) voice
+// > a voice literally named Filipino/Tagalog. We deliberately never fall
+// back to a Spanish voice, since Spanish narration reads Tagalog words
+// with the wrong stress and vowel color.
+function getFilipinoVoice(){
+  const voices = speechSynthesis.getVoices();
+  if(!voices || voices.length===0) return null;
+  const byLang = (test)=> voices.find(v => v.lang && test(v.lang.toLowerCase()));
+  return (
+    byLang(l=>l==='fil-ph') ||
+    byLang(l=>l.startsWith('fil')) ||
+    byLang(l=>l.startsWith('tl')) ||
+    byLang(l=>l.endsWith('-ph') || l.includes('_ph')) ||
+    voices.find(v=>/filipino|tagalog/i.test(v.name)) ||
+    null
+  );
+}
+
+function speakWord(span){
+  stopAllAudio();
+  document.querySelectorAll('.story-body .w.speaking').forEach(w=>w.classList.remove('speaking'));
+  const word = span.dataset.word;
+  const clean = word.replace(/[“”"’',.!?;:()—]/g,'');
+  if(!clean) return;
+  span.classList.add('speaking');
+
+  if(isSpeechgenReady()){
+    synthesizeWithSpeechGen(clean, {slow:true}).then(url=>{
+      currentAudio = new Audio(url);
+      currentAudio.play();
+      currentAudio.onended = ()=>{ span.classList.remove('speaking'); currentAudio = null; };
+    }).catch(err=>{
+      console.warn('SpeechGen word pronunciation failed, using browser voice:', err);
+      speakWordWithBrowser(clean, span);
+    });
+  } else {
+    speakWordWithBrowser(clean, span);
+  }
+}
+
+function speakWordWithBrowser(clean, span){
+  if(!('speechSynthesis' in window)){ span.classList.remove('speaking'); return; }
+  const utter = new SpeechSynthesisUtterance(clean);
+  const voice = getFilipinoVoice();
+  utter.voice = voice || null;
+  utter.lang = voice ? voice.lang : 'fil-PH';
+  utter.rate = 0.75;
+  utter.pitch = 1.05;
+  utter.onend = ()=> span.classList.remove('speaking');
+  utter.onerror = ()=> span.classList.remove('speaking');
+  speechSynthesis.speak(utter);
+}
+
+function navigate(dir){
+  let newIndex = currentIndex + dir;
+  if(newIndex < 0) newIndex = LEGENDS.length - 1;
+  if(newIndex >= LEGENDS.length) newIndex = 0;
+  currentIndex = newIndex;
+  stopAllAudio();
+  renderPage();
+  document.getElementById('pageContent').scrollTop = 0;
+}
+
+function closeStory(){
+  stopAllAudio();
+  document.getElementById('overlay').classList.remove('open');
+  renderGrid();
+}
+
+function toggleDone(id){
+  if(doneSet.has(id)){
+    doneSet.delete(id);
+  } else {
+    doneSet.add(id);
+    launchConfetti();
+  }
+  renderPage();
+  updateProgress();
+}
+
+function readAloud(l){
+  const btn = document.getElementById('ttsBtn');
+  const note = document.getElementById('ttsNote');
+  stopAllAudio();
+  document.querySelectorAll('.story-body .w.speaking').forEach(w=>w.classList.remove('speaking'));
+  const text = l.title + ". " + l.story.join(' ');
+
+  if(isSpeechgenReady()){
+    btn.classList.add('loading');
+    btn.textContent = '⏳ Naghahanda ng boses...';
+    note.textContent = `Babaeng boses na Tagalog (${speechgenConfig.voice}) — SpeechGen.io`;
+    synthesizeWithSpeechGen(text, {slow:false}).then(url=>{
+      currentAudio = new Audio(url);
+      currentAudio.play();
+      btn.classList.remove('loading');
+      btn.textContent = '🔊 Basahin nang Malakas';
+      currentAudio.onended = ()=>{ currentAudio = null; };
+    }).catch(err=>{
+      console.warn('SpeechGen failed, falling back to browser voice:', err);
+      note.textContent = 'Hindi magamit ang SpeechGen ngayon — gumagamit muna ng boses ng browser.';
+      btn.classList.remove('loading');
+      btn.textContent = '🔊 Basahin nang Malakas';
+      speakWithBrowser(text, {slow:false});
+    });
+  } else {
+    note.textContent = '';
+    speakWithBrowser(text, {slow:false});
+  }
+}
+
+function speakWithBrowser(text, {slow=false} = {}){
+  if(!('speechSynthesis' in window)){
+    alert('Paumanhin, hindi suportado ng iyong browser ang pagbasa nang malakas.');
+    return;
+  }
+  speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  const voice = getFilipinoVoice();
+  utter.voice = voice || null;
+  utter.lang = voice ? voice.lang : 'fil-PH';
+  utter.rate = slow ? 0.75 : 0.9;
+  utter.pitch = 1.05;
+  speechSynthesis.speak(utter);
+}
+
+function launchConfetti(){
+  const canvas = document.getElementById('confetti');
+  canvas.style.display = 'block';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  const colors = ['#F4A825','#E8735B','#7FB069','#4C7A4C','#6B4226'];
+  let particles = Array.from({length:60}, ()=>({
+    x: Math.random()*canvas.width,
+    y: -20,
+    r: 4+Math.random()*5,
+    c: colors[Math.floor(Math.random()*colors.length)],
+    vy: 2+Math.random()*3,
+    vx: -1+Math.random()*2,
+    rot: Math.random()*360
+  }));
+  let frames = 0;
+  function tick(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      p.y += p.vy; p.x += p.vx; p.rot += 5;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);
+      ctx.restore();
+    });
+    frames++;
+    if(frames < 90){
+      requestAnimationFrame(tick);
+    } else {
+      canvas.style.display='none';
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+  }
+  tick();
+}
+
+document.getElementById('search').addEventListener('input', (e)=>{
+  searchTerm = e.target.value;
+  renderGrid();
+});
+
+document.getElementById('openSettingsBtn').addEventListener('click', openSettings);
+document.getElementById('closeSettingsBtn').addEventListener('click', closeSettings);
+document.getElementById('saveSettingsBtn').addEventListener('click', ()=>{
+  saveSettings();
+  closeSettings();
+});
+document.getElementById('settingsOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'settingsOverlay') closeSettings();
+});
+
+// 30 short sentences drawn from the alamat vocabulary, for handwriting practice.
+// Each starts with a capital letter so both letter cases are demonstrated.
+const TRACE_SENTENCES = [
+  "Maliwanag ang araw.","Bilog ang buwan.","Kumikislap ang bituin.","Makulay ang bahaghari.",
+  "Matayog ang bundok.","Dumadaloy ang ilog.","Malawak ang lawa.","Malalim ang dagat.",
+  "Malago ang puno.","Mabango ang bulaklak.","Masarap ang prutas.","Ginintuan ang palay.",
+  "Puti ang bigas.","Lumilipad ang ibon.","Makulay ang paruparo.","Kumikinang ang alitaptap.",
+  "Matiyaga ang pagong.","Matalino ang matsing.","Malakas ang kalabaw.","Maitim ang uwak.",
+  "Lumulukso ang palaka.","Maliksi ang butiki.","Masipag ang bubuyog.","Matamis ang pinya.",
+  "May buto ang mangga.","Dilaw ang saging.","Mataas ang niyog.","Malusog ang bayabas.",
+  "Mabango ang sampaguita.","Maganda ang Pilipinas."
+];
+
+// Three-line practice-paper geometry — matches standard primary ruled paper:
+// blue top line, red dashed middle line, blue bottom line (baseline).
+// RULE: a capital/big letter starts at the top blue line and ends at the
+// bottom blue line (full height). A small/lowercase letter only uses the
+// space between the red middle line and the bottom blue line — it never
+// goes above the red line. Font-size is chosen (never distorted/stretched)
+// so each glyph keeps its natural, readable shape while its cap-height /
+// x-height lands right on its target line.
+const TRACE_ROW_H = 92;
+const TRACE_TOP_Y = 20;
+const TRACE_BOTTOM_Y = 72;
+const TRACE_MID_Y = (TRACE_TOP_Y + TRACE_BOTTOM_Y) / 2; // middle guide line
+// Font-size is derived from the target zone height divided by the font's
+// approximate cap-height / x-height ratio, so the glyph itself — not an
+// artificial stretch — reaches the line.
+const CAP_HEIGHT_RATIO = 0.72; // Baloo 2 cap-height ≈ 72% of font-size
+const X_HEIGHT_RATIO = 0.52;   // Baloo 2 x-height ≈ 52% of font-size
+const CAP_FONT_SIZE = Math.round((TRACE_BOTTOM_Y - TRACE_TOP_Y) / CAP_HEIGHT_RATIO); // top line → bottom line
+const LOW_FONT_SIZE = Math.round((TRACE_BOTTOM_Y - TRACE_MID_Y) / X_HEIGHT_RATIO);   // middle line → bottom line only
+
+function isCapChar(ch){
+  return /[A-ZÑÁÉÍÓÚ0-9]/.test(ch);
+}
+function charFontSize(ch){
+  return isCapChar(ch) ? CAP_FONT_SIZE : LOW_FONT_SIZE;
+}
+
+// Real character widths (not a guessed ratio) so wide letters like "M"/"W"
+// and narrow ones like "i"/"l" never overlap or leave odd gaps — this is
+// what caused the unreadable, colliding letters before the fix.
+const _measureCanvas = document.createElement('canvas');
+const _measureCtx = _measureCanvas.getContext('2d');
+const LETTER_GAP = 4; // small breathing room between traced letters
+function measureCharWidth(ch, fontSize){
+  _measureCtx.font = `500 ${fontSize}px "Baloo 2", cursive`;
+  return _measureCtx.measureText(ch).width;
+}
+function charAdvance(ch){
+  if(ch === ' ') return LOW_FONT_SIZE * 0.8;
+  return measureCharWidth(ch, charFontSize(ch)) + LETTER_GAP;
+}
+function escapeXml(ch){
+  return ch.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Lays out one instance of `text` starting at `startX`, on the shared
+// baseline (bottom line). Capitals are drawn bigger (toward the top line),
+// lowercase letters smaller (toward the middle line) — plain font-size only,
+// so every glyph stays undistorted and easy to read.
+function layoutTraceText(text, startX, cssClass){
+  let x = startX;
+  let spans = '';
+  for(const ch of text){
+    if(ch !== ' '){
+      const size = charFontSize(ch);
+      spans += `<text x="${x.toFixed(1)}" y="${TRACE_BOTTOM_Y}" font-size="${size}" class="${cssClass}" font-family="'Baloo 2', cursive" font-weight="500">${escapeXml(ch)}</text>`;
+    }
+    x += charAdvance(ch);
+  }
+  return { markup: spans, endX: x };
+}
+
+// One three-line guide row containing a single instance of `sentence`,
+// either solid (readable reference) or dotted (for tracing).
+function buildGuideLineSVG(sentence, cssClass){
+  const text = layoutTraceText(sentence, 10, cssClass);
+  const totalWidth = Math.max(Math.ceil(text.endX + 12), 320);
+  return `<svg width="${totalWidth}" height="${TRACE_ROW_H}" viewBox="0 0 ${totalWidth} ${TRACE_ROW_H}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+    <line x1="0" y1="${TRACE_TOP_Y}" x2="${totalWidth}" y2="${TRACE_TOP_Y}" stroke="#5B8DE8" stroke-width="2"/>
+    <line x1="0" y1="${TRACE_MID_Y}" x2="${totalWidth}" y2="${TRACE_MID_Y}" stroke="#E8735B" stroke-width="2" stroke-dasharray="6,5"/>
+    <line x1="0" y1="${TRACE_BOTTOM_Y}" x2="${totalWidth}" y2="${TRACE_BOTTOM_Y}" stroke="#5B8DE8" stroke-width="2"/>
+    ${text.markup}
+  </svg>`;
+}
+
+function renderTraceList(){
+  const list = document.getElementById('traceList');
+  list.innerHTML = TRACE_SENTENCES.map((sentence, i)=>{
+    const solidSVG = buildGuideLineSVG(sentence, 'model-letter');
+    const dottedSVG = buildGuideLineSVG(sentence, 'ghost-letter');
+    return `
+      <div class="trace-card">
+        <div class="trace-label">✏️ Pangungusap ${i+1} ng 30</div>
+        <div class="trace-line-label">👀 Basahin muna:</div>
+        <div class="trace-row-scroll">${solidSVG}</div>
+        <div class="trace-line-label">✍️ Sundan ang tuldok:</div>
+        <div class="trace-row-scroll">${dottedSVG}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function switchTab(tab){
+  const readBtn = document.getElementById('tabReadBtn');
+  const writeBtn = document.getElementById('tabWriteBtn');
+  const readTab = document.getElementById('readTab');
+  const writeTab = document.getElementById('writeTab');
+  if(tab === 'write'){
+    readTab.style.display = 'none';
+    writeTab.style.display = 'block';
+    readBtn.classList.remove('active');
+    writeBtn.classList.add('active');
+  } else {
+    readTab.style.display = 'block';
+    writeTab.style.display = 'none';
+    writeBtn.classList.remove('active');
+    readBtn.classList.add('active');
+  }
+}
+
+document.getElementById('tabReadBtn').addEventListener('click', ()=>switchTab('read'));
+document.getElementById('tabWriteBtn').addEventListener('click', ()=>switchTab('write'));
+renderTraceList();
+// Re-render once "Baloo 2" is fully loaded so character-width measurements
+// (used to space letters without overlap) are accurate, not based on a
+// fallback font.
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(()=>{ renderTraceList(); });
+}
+
+renderChips();
+renderGrid();
+if('speechSynthesis' in window){
+  speechSynthesis.onvoiceschanged = ()=>{};
+}
+</script>
+</body>
+</html>
