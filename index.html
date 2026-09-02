@@ -3,7 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title>Mga Alamat ng Pilipinas — Aklatan ng Bata</title>
+<meta name="description" content="Basahin ang mga alamat ng Pilipinas para sa mga bata. Libreng kwentong pambata, Filipino reading practice, comprehension questions, at pagsasanay sa pagsulat para sa Kinder at Grade 1.">
+<meta name="keywords" content="mga alamat ng Pilipinas, alamat ng Pilipinas, kwentong pambata, kwentong Filipino, alamat para sa mga bata, Filipino stories for kids, pagbabasa para sa Kinder, Grade 1 reading materials, pagsasanay sa pagbasa, pagsasanay sa pagsulat, Filipino learning activities, Tagalog stories for kids, educational website for kids Philippines, reading comprehension Filipino">
+<meta name="author" content="Aklatan ng Bata">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#6B4226">
+<link rel="canonical" href="https://www.alamat.space/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tl_PH">
+<meta property="og:site_name" content="Aklatan ng Bata">
+<meta property="og:title" content="Mga Alamat ng Pilipinas para sa mga Bata | Aklatan ng Bata">
+<meta property="og:description" content="Libreng mga alamat ng Pilipinas, kwentong pambata, pagbabasa, pag-unawa, at pagsasanay sa pagsulat para sa Kinder at Grade 1.">
+<meta property="og:url" content="https://www.alamat.space/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mga Alamat ng Pilipinas para sa mga Bata | Aklatan ng Bata">
+<meta name="twitter:description" content="Libreng mga alamat ng Pilipinas at Filipino learning activities para sa mga bata.">
+<title>Mga Alamat ng Pilipinas para sa mga Bata | Aklatan ng Bata</title>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"Aklatan ng Bata - Mga Alamat ng Pilipinas",
+  "url":"https://www.alamat.space/",
+  "inLanguage":"tl",
+  "description":"Mga alamat ng Pilipinas, kwentong pambata, pagbabasa at pagsasanay sa pagsulat para sa Kinder at Grade 1.",
+  "keywords":"mga alamat ng Pilipinas, kwentong pambata, pagbabasa, Filipino learning"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -22,7 +48,8 @@
     --shadow: 0 6px 0 rgba(74,44,24,0.25);
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;overflow-x:hidden;}
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{
     font-family:'Quicksand',sans-serif;
     background:
@@ -32,7 +59,10 @@
     background-attachment:fixed;
     color:var(--ink);
     min-height:100vh;
+    min-height:100dvh;
     -webkit-tap-highlight-color:transparent;
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
   }
   /* woven mat texture */
   body::before{
@@ -140,11 +170,12 @@
   }
   #search{
     flex:1;
+    min-width:0;
     padding:12px 14px;
     border-radius:14px;
     border:2px solid var(--wood);
     font-family:'Quicksand',sans-serif;
-    font-size:1rem;
+    font-size:16px; /* keep >=16px so iOS Safari doesn't auto-zoom on focus */
     font-weight:600;
     background:var(--cream);
     color:var(--ink);
@@ -154,17 +185,19 @@
     background:var(--leaf);
     color:#fff;
     border-radius:14px;
-    padding:0 14px;
+    padding:0 12px;
     display:flex;
     align-items:center;
     font-weight:700;
     font-size:0.85rem;
     white-space:nowrap;
     box-shadow:var(--shadow);
+    flex:0 0 auto;
   }
   .gear-btn{
     flex:0 0 auto;
     width:44px;
+    min-height:44px;
     background:var(--wood);
     color:#FFF6E0;
     border:none;
@@ -174,6 +207,14 @@
     box-shadow:var(--shadow);
   }
   .gear-btn:active{ transform:translateY(2px); }
+
+  /* On narrow phones, stack the search box above the progress/settings row
+     so the input never gets squeezed into an unreadably small field. */
+  @media (max-width:380px){
+    .search-wrap{ flex-wrap:wrap; }
+    #search{ flex:1 1 100%; }
+    .progress-pill{ flex:1; justify-content:center; }
+  }
 
   /* ---------- VOICE SETTINGS PANEL ---------- */
   .settings-overlay{
@@ -190,8 +231,9 @@
     width:100%;
     max-width:720px;
     border-radius:22px 22px 0 0;
-    padding:18px 18px 24px;
+    padding:18px 18px calc(24px + env(safe-area-inset-bottom));
     max-height:85vh;
+    max-height:85dvh;
     overflow-y:auto;
     box-shadow:0 -6px 0 rgba(74,44,24,0.15);
   }
@@ -218,11 +260,11 @@
   .settings-sheet input[type="password"],
   .settings-sheet select{
     width:100%;
-    padding:10px 12px;
+    padding:12px 12px;
     border-radius:12px;
     border:2px solid var(--leaf-light);
     font-family:'Quicksand',sans-serif;
-    font-size:0.95rem;
+    font-size:16px; /* keep >=16px so iOS Safari doesn't auto-zoom on focus */
     font-weight:600;
     background:#fff;
     color:var(--ink);
@@ -459,7 +501,8 @@
     width:100%;
     max-width:720px;
     min-height:100vh;
-    padding:0 0 40px;
+    min-height:100dvh;
+    padding:0 0 calc(40px + env(safe-area-inset-bottom));
     position:relative;
     background-image:
       repeating-linear-gradient(0deg, transparent 0 38px, rgba(107,66,38,0.06) 38px 39px);
@@ -468,7 +511,7 @@
     position:sticky; top:0;
     background:var(--wood);
     color:#FFF6E0;
-    padding:14px 14px;
+    padding:calc(14px + env(safe-area-inset-top)) 14px 14px;
     display:flex;
     align-items:center;
     gap:10px;
@@ -587,7 +630,7 @@
     border:2px solid var(--leaf-light);
     padding:8px 10px;
     font-family:'Quicksand',sans-serif;
-    font-size:1rem;
+    font-size:16px; /* keep >=16px so iOS Safari doesn't auto-zoom on focus */
     resize:vertical;
     background:var(--cream);
   }
@@ -629,7 +672,7 @@
   }
   footer{
     text-align:center;
-    padding:16px;
+    padding:16px 16px calc(16px + env(safe-area-inset-bottom));
     font-size:0.75rem;
     color:var(--wood-dark);
     opacity:0.75;
@@ -644,7 +687,7 @@
   <div class="signboard">
     <span class="leaf-emoji">🌿</span>
     <h1>MGA ALAMAT NG PILIPINAS</h1>
-    <p>Aklatan ng Bata — Pagbasa at Pagsulat</p>
+    <p>Mga alamat ng Pilipinas, kwentong pambata, pagbabasa at pagsasanay sa pagsulat para sa Kinder at Grade 1.</p>
   </div>
 </div>
 
